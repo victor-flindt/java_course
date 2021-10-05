@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.math.*;
 
 public class NumberCheck {
-	public static void main(String[] args) {
-        try{System.out.println(NumberCheck.check("32165546168632215835423155415435"));
+	public static void main(String[] args) {  
+        try{System.out.println(NumberCheck.check("812738712837"));
 	}
 	catch (Exception e){
 		// catches exepctions if the input to the functions is not a number
