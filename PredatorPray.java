@@ -14,16 +14,16 @@ public class PredatorPray {
             System.exit(0);
         }
         // init and allocating memory. 
-        int[] pray_position = new int[2];
-        int[] predetor_position = new int[2];
+        long[] pray_position = new long[2];         // accounts for overflow in position.  
+        long[] predetor_position = new long[2];
 
         // declare start positions of pray
-        pray_position[0]=((int)Math.floor(Math.random()*((n-1)-0+1)))+pray_position[0];
-        pray_position[1]=((int)Math.floor(Math.random()*((n-1)-0+1)))+pray_position[1];
+        pray_position[0]=((long)Math.floor(Math.random()*((n-1)-0+1)));
+        pray_position[1]=((long)Math.floor(Math.random()*((n-1)-0+1)));
 
         // delcare start position of predetor
-        predetor_position[0]=((int)Math.floor(Math.random()*((n-1)-0+1)))+predetor_position[0];
-        predetor_position[1]=((int)Math.floor(Math.random()*((n-1)-0+1)))+predetor_position[1];
+        predetor_position[0]=((long)Math.floor(Math.random()*((n-1)-0+1)));
+        predetor_position[1]=((long)Math.floor(Math.random()*((n-1)-0+1)));
 
         // state parameters and starting positions
         System.out.format("n=%d s=%d t=%d",n,s,t);
@@ -41,11 +41,11 @@ public class PredatorPray {
         }
     }
 
-    public static int[] new_position_pray(int step_size, int[] pray_position, int map_dimension){
+    public static long[] new_position_pray(int step_size, long[] pray_position, int map_dimension){
         int min = -step_size;
         int max = step_size;
-        pray_position[0]=((int)Math.floor(Math.random()*(max-min+1)+min))+pray_position[0];
-        pray_position[1]=((int)Math.floor(Math.random()*(max-min+1)+min))+pray_position[1];
+        pray_position[0]=((long)Math.floor(Math.random()*(max-min+1)+min))+pray_position[0];
+        pray_position[1]=((long)Math.floor(Math.random()*(max-min+1)+min))+pray_position[1];
 
         if(pray_position[0]>=map_dimension){
             pray_position[0]=pray_position[0]-(pray_position[0]-map_dimension+1);
@@ -62,7 +62,7 @@ public class PredatorPray {
         return pray_position;
     }
     
-    public static int[] new_position_predetor(int step_size, int[] predetor_position, int[] pray_position, int map_size){
+    public static long[] new_position_predetor(int step_size, long[] predetor_position, long[] pray_position, int map_size){
         for (int i = 0; i < step_size; i++) {
             if(pray_position[0] > predetor_position[0]){
                 predetor_position[0]++;
